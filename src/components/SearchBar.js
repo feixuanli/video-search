@@ -13,9 +13,11 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div> Search Bar 
-                <form onSubmit={this.onFormSubmit}>
+            <div className="ui segment">
+                <form onSubmit={this.onFormSubmit} className="ui form">
+                    <label for="search"> Search a video </label>
                     <input 
+                        id="search"
                         type='text' 
                         value={this.state.searchText}
                         onChange={e => this.setState({searchText: e.target.value})}
