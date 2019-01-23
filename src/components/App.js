@@ -3,11 +3,13 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 //import Youtube from '../api/Youtube';
 import List from './List';
+import Player from './Player';
 
 class App extends React.Component {
     state = {
         searchContent: '',
-        items: []
+        items: [],
+        selected: {}
     }
 
     onFormSubmit = (searchContent) => {
@@ -19,24 +21,35 @@ class App extends React.Component {
               'q': searchContent,
               'part': 'snippet',
               'key': 'AIzaSyDvPakoXS8Z_LT23tfFKbx0nDGInH0sn2A'
-            }
+            },
         })
         .then( res => {
-            this.setState({items: res.data.items})
+            console.log(res)
+            this.setState({items: res.data.items, selected: res.data.items[0]});
         }).catch(function (error) {
             console.log(error);
         });
     }
 
+    onVideoClick = () => {
+        const self = this;
+        return function(item){
+            console.log('app item selected', item);
+            self.setState({selected: item});
+        }
+    }
 
     render() {
         return (
             <div className="ui grid"> 
-                <div className="ten wide column">
+                <div className="sixteen wide column">
                     <SearchBar onSubmit={this.onFormSubmit} />
                 </div>
+                <div className="ten wide column">
+                    <Player content={this.state.selected}/>
+                </div>
                 <div className="six wide column">
-                    <List content={this.state.items} />
+                    <List content={this.state.items} onVideoClick={this.onVideoClick()}/>
                 </div>
             </div>
         );
