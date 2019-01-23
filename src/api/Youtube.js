@@ -8,12 +8,13 @@ const Youtube = (term) => {
           'key': 'AIzaSyDvPakoXS8Z_LT23tfFKbx0nDGInH0sn2A'
         }
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      // .then(function (response) {
+      //   console.log(response);
+      //   return response;
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
 }
 
 export default Youtube; 
