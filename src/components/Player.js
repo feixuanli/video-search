@@ -5,8 +5,8 @@ const Player = (props) => {
         const url = `https://www.youtube.com/embed/${props.content.id.videoId}`;
         return (
             <div>
-                {props.content.snippet.title}
-                <iframe title={props.content.snippet.title} src={url}></iframe>
+                <iframe className="ui container" style={{height: '400px'}} title={props.content.snippet.title} src={url}></iframe>
+                <p> {props.content.snippet.title}</p>
             </div>
         );
     }
