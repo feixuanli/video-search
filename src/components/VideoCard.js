@@ -1,12 +1,16 @@
 import React from 'react';
+import './VideoCard.css';
 
 const VideoCard = ({video}) => {
     
     return (
-        <div className="ui segment">
-            <img alt={video.snippet.description} src={video.snippet.thumbnails.medium.url}/>
-            <h2>{video.snippet.title}</h2>
-            <p>{video.snippet.description}</p>
+        <div className="video-item item">
+            <img className="ui image" alt={video.snippet.description} src={video.snippet.thumbnails.medium.url}/>
+            <div className="content">
+                <div className="header">
+                    {video.snippet.title}
+                </div>
+            </div>
         </div>
     );
 }

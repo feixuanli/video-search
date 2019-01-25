@@ -1,20 +1,13 @@
 import axios from 'axios';
 
-const Youtube = (term) => {
-    axios.get('https://www.googleapis.com/youtube/v3/search', {
-        params: {
-          'q': term,
-          'part': 'snippet',
-          'key': 'AIzaSyDvPakoXS8Z_LT23tfFKbx0nDGInH0sn2A'
-        }
-      })
-      // .then(function (response) {
-      //   console.log(response);
-      //   return response;
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
-}
+const KEY = 'AIzaSyDvPakoXS8Z_LT23tfFKbx0nDGInH0sn2A';
 
-export default Youtube; 
+// an axios instance 
+export default axios.create({
+  baseURL:  'https://www.googleapis.com/youtube/v3/',
+  params: {
+    part: 'snippet',
+    maxResults: 5, 
+    key: KEY,
+  }
+});
