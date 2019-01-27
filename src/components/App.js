@@ -11,6 +11,10 @@ class App extends React.Component {
         selected: {}
     }
 
+    componentDidMount() {
+        this.onFormSubmit('cat');
+    }
+
     onFormSubmit = async (searchContent) => {
         this.setState({searchContent});
         //send api request 
@@ -31,8 +35,16 @@ class App extends React.Component {
         return (
             <div className="ui container">
                 <SearchBar onSubmit={this.onFormSubmit} />
-                <Player content={this.state.selected}/>
-                <VideoList content={this.state.items} onVideoClick={this.onVideoClick}/>
+                <div className="ui grid">
+                    <div className="ui row">
+                        <div className="eleven wide column">
+                            <Player content={this.state.selected}/>
+                        </div>
+                        <div className="five wide column">
+                            <VideoList content={this.state.items} onVideoClick={this.onVideoClick}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

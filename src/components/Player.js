@@ -5,12 +5,17 @@ const Player = (props) => {
         const url = `https://www.youtube.com/embed/${props.content.id.videoId}`;
         return (
             <div>
-                <iframe className="ui container" style={{height: '400px'}} title={props.content.snippet.title} src={url}></iframe>
-                <p> {props.content.snippet.title}</p>
+                <div className="ui embed">
+                    <iframe style={{height: '400px'}} title={props.content.snippet.title} src={url}></iframe>
+                </div>
+                <div className="ui segment">
+                    <h4 className="ui header"> {props.content.snippet.title}</h4>
+                    <p>{props.content.snippet.description}</p>
+                </div>
             </div>
         );
     }
-    return <div>please search</div>;
+    return <div>Loading...</div>;
 }
 
 export default Player;
