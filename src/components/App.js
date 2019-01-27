@@ -23,27 +23,16 @@ class App extends React.Component {
         this.setState({items: res.data.items, selected: res.data.items[0]});
     }
 
-    onVideoClick = () => {
-        const self = this;
-        return function(item){
-            self.setState({selected: item});
-        }
+    onVideoClick = (item) => {
+        this.setState({selected: item});
     }
 
     render() {
         return (
             <div className="ui container">
-                <div className="ui grid"> 
-                    <div className="sixteen wide column">
-                        <SearchBar onSubmit={this.onFormSubmit} />
-                    </div>
-                    <div className="ten wide column">
-                        <Player content={this.state.selected}/>
-                    </div>
-                    <div className="six wide column">
-                        <VideoList content={this.state.items} onVideoClick={this.onVideoClick()}/>
-                    </div>
-                </div>
+                <SearchBar onSubmit={this.onFormSubmit} />
+                <Player content={this.state.selected}/>
+                <VideoList content={this.state.items} onVideoClick={this.onVideoClick}/>
             </div>
         );
     }
